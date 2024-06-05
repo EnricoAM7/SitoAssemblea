@@ -1,0 +1,71 @@
+
+!!!! inserire a tutte le tabelle il blocked flag
+
+
+CREATE TABLE Assemblea(
+	id_assemblea INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+	ora_inizio TIME NOT NULL,
+	ora_termine TIME NOT NULL,
+    id_luogo INT NOT NULL REFERENCES Luogo(id_luogo),
+    blocked_flag BOOLEAN DEFAULT 0
+);
+
+CREATE TABLE Luogo(
+    id_luogo INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    blocked_flag BOOLEAN DEFAULT 0
+);
+
+CREATE TABLE Utente(
+    id_utente INT PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(255) NOT NULL,
+    pw VARCHAR(255) NOT NULL,
+    nome VARCHAR(255) NOT NULL,
+    cognome VARCHAR(255) NOT NULL,
+    id_classe INT REFERENCES Classe(id_classe),
+    admin_flag BOOLEAN DEFAULT 0,
+    blocked_flag BOOLEAN DEFAULT 0
+);
+
+CREATE TABLE Classe(
+    id_classe INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    id_luogo INT NOT NULL REFERENCES Luogo(id_luogo),
+    blocked_flag BOOLEAN DEFAULT 0
+);
+
+CREATE TABLE Attività(
+    id_attività INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    descrizione VARCHAR(1000) NOT NULL,
+    zona VARCHAR(255) NOT NULL,
+    max_partecipants INT NOT NULL,
+    ora_inizio TIME NOT NULL,
+	ora_termine TIME NOT NULL,
+    id_assemblea INT NOT NULL REFERENCES Assemblea(assemblea),
+    blocked_flag BOOLEAN DEFAULT 0
+);
+
+CREATE TABLE Iscrizione(
+    id_iscrizione INT PRIMARY KEY AUTO_INCREMENT,
+    id_utente INT NOT NULL REFERENCES Utente(id_utente),
+    id_attività INT NOT NULL REFERENCES Attività(id_attività)
+    blocked_flag BOOLEAN DEFAULT 0
+);
+
+CREATE TABLE Session_Token(
+    id_session INT PRIMARY KEY AUTO_INCREMENT,
+    token VARCHAR(1000) NOT NULL,
+    id_utente INT NOT NULL REFERENCES Utente(id_utente),
+    discard_after INT NOT NULL,
+    time_gen INT NOT NULL,
+    expired BOOLEAN DEFAULT 0,
+    blocked_flag BOOLEAN DEFAULT 0
+);
+
+INSERT INTO Assemblea(nome, ora_inizio, ora_termine, id_luogo)
+VALUES ("Assemblea di fine anno scolastico", '08:00:00', '13:00:00', 1);
+
+INSERT INTO Attività(nome, descrizione, zona, max_partecipants, ora_inizio, ora_termine, id_assemblea)
+VALUES ("Torneo di calcetto","Torneo di calcetto a 5 composta da 2 gironi da 4 squadre.","Campo da calcio Rendentore", 40, "08:00:00", "12:00:00", 1);

@@ -1,0 +1,225 @@
+body {
+    margin: 0;
+    height: 100%;
+}
+
+.nav_bar {
+    display: flex;
+    height: 120px;
+    width: 100%;
+    background-color: rgb(26, 26, 26);
+    justify-content: flex-start; /* Allinea gli elementi verso sinistra */
+}
+
+
+.nav_bar div {
+    
+   
+    align-items: center;
+}
+
+.separator {
+    height: 2px;
+    width: 100%;
+    background-color: rgb(133,142,153);
+}
+
+.main {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(65,75,84);
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra orizzontalmente */
+}
+
+.logo {
+    display: flex; /* Permette l'allineamento a sinistra */
+    justify-content: left;
+    align-items: center; /* Allinea l'immagine verticalmente */
+    padding-left: 15px; /* Aggiunge spazio a sinistra per allineare l'immagine */
+    flex-basis: 25%; /* Ogni div occupa il 25% dello spazio orizzontale */
+}
+
+.logo_a {
+    display: flex; /* Permette l'allineamento a sinistra */
+    justify-content: left;
+    align-items: center; /* Allinea l'immagine verticalmente */
+    
+    flex-basis: 30%; /* Ogni div occupa il 25% dello spazio orizzontale */
+}
+
+.logo img {
+    max-height: 100%; /* Assicura che l'immagine non superi l'altezza della div */
+    max-width: 100%; /* Assicura che l'immagine non superi la larghezza della div */
+}
+
+
+.title {
+    display: flex;
+    flex-direction: column; /* Imposta i due h1 uno sopra l'altro */
+    align-items: center; /* Centra orizzontalmente */
+    justify-content: center; /* Centra verticalmente */
+    color: white;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    flex-basis: 50%; /* La div title occupa il 50% dello spazio orizzontale */
+
+}
+
+.title h1 {
+    margin: 5px 0; /* Modifica lo spazio tra i due h1 */
+    font-size: 30px;
+}
+.title h2 {
+    margin: 5px 0; /* Modifica lo spazio tra i due h1 */
+}
+
+.user {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: right;
+    padding-right: 25px; /* Aggiunge spazio a sinistra per allineare l'immagine */
+    flex-basis: 25%; /* Ogni div occupa il 25% dello spazio orizzontale */
+
+}
+
+
+
+.button-18 {
+    height: 50px;
+    width: 100px;
+    align-items: center;
+    background-color: rgb(244,188,95);
+    border: 0;
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    max-width: 480px;
+    min-height: 40px;
+    min-width: 0px;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+}
+
+.button-18:hover{ 
+    background-color: rgb(184,141,71);
+    color: #ffffff;
+}
+
+
+
+.button-18:disabled { 
+    cursor: not-allowed;
+    background: rgba(0, 0, 0, .08);
+    color: rgba(0, 0, 0, .3);
+}
+
+.img_div{
+    width: 100%;
+    height: 150px;
+    margin-top: 20px;
+    align-items: center; /* Centra il contenuto verticalmente */
+    justify-content: center; /* Centra il contenuto orizzontalmente */
+    display: flex;
+}
+
+.login_div{
+    height: 100%;
+    max-width: 700px;
+    min-width: 400px;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    
+    align-items: center; /* Centra il contenuto verticalmente */
+    justify-content: center; /* Centra il contenuto orizzontalmente */
+}
+
+.input_label {
+    color: white;
+    font-size: 18px; /* Puoi modificare il valore per aumentare o diminuire la dimensione del testo */
+}
+
+.nome_input{
+    height: 50px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.cognome_input{
+    height: 50px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.mail_input{
+    height: 50px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.password_input{
+    height: 50px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.submit_input{
+    height: 50px;
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: rgb(244,188,95);
+}
+
+.links_container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.link_div_1 {
+    width: 50%;
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: left;
+    color: white;
+    text-decoration: none; /* Rimuove la sottolineatura del link */
+}
+
+.link_div_2 {
+    width: 50%;
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: right;
+    color: white;
+    text-decoration: none; /* Rimuove la sottolineatura del link */
+}
+
+.link_div_1 a,
+.link_div_2 a {
+    color: white; /* Imposta il colore del testo dei link a bianco */
+    text-decoration: none; /* Rimuove la sottolineatura del link */
+}
+
+.link_div_1 a:hover,
+.link_div_2 a:hover {
+    text-decoration: underline; /* Aggiunge una sottolineatura quando il link viene passato con il mouse */
+}
