@@ -152,6 +152,7 @@ body {
     height: 100%;
     width: 66.67%; /* 2/3 of the container */
     padding: 10px;
+    padding-left: 20px;
 }
 
 .right_div {

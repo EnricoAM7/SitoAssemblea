@@ -48,4 +48,7 @@ if ($logged == true) {
 
 
     header("Location: index.php");
+}else if($logged==false){
+    header("Location: index.php");
+    //sviluppare reinvio del modulo per password errate con avvertimento
 }

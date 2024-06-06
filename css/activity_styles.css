@@ -130,11 +130,14 @@ body {
     background-color: rgb(244, 188, 95);
     display: flex;
     justify-content: space-between;
+    align-items: center; /* Centra il contenuto verticalmente */
     border: 5px solid rgb(26, 26, 26); /* Cambia il colore secondo le tue preferenze */
     box-sizing: border-box; /* Assicura che il padding e il bordo non influiscano sulla larghezza dell'elemento */
     border-radius: 15px; /* Arrotonda i bordi del riquadro */
-    height: 200px; 
+    height: auto; /* Imposta l'altezza automatica in base al contenuto */
+    text-align: center; /* Centra il contenuto orizzontalmente */
 }
+
 
 .riquadro_assemblea_signed_activity {
     width: 100%;
@@ -170,7 +173,9 @@ body {
 .left_div {
     height: 100%;
     width: 66.67%; /* 2/3 of the container */
-    padding: 10px;
+    
+    text-align: left; 
+    padding-left: 20px;
 }
 
 .right_div {

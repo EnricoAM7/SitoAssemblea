@@ -20,7 +20,7 @@
 
             <?php
             //$servername = "80.20.95.170";
-            //prova commit
+            
             $servername = "192.168.5.37";
             $username = "5AI_AMBROSI";
             $password = "qRJn1Nka47LTpQmD";
@@ -33,7 +33,6 @@
 
             session_start();
             if (isset($_SESSION["token"])) {
-
                 $token = $_SESSION["token"];
                 $query = "SELECT token  FROM Session_Token WHERE blocked_flag=0 AND expired=0 AND token='" . $token . "'";
                 $result = $conn->query($query);
@@ -83,7 +82,7 @@
             <div class="login_content">
                 <?php
 
-                $query = "SELECT Assemblea.nome AS 'nome_assemblea', Assemblea.ora_inizio, Assemblea.ora_termine, Luogo.nome AS 'nome_luogo' FROM Assemblea, Luogo WHERE Assemblea.blocked_flag=0 AND Luogo.blocked_flag=0 AND Assemblea.id_luogo=Luogo.id_luogo;";
+                $query = "SELECT Assemblea.id_assemblea , Assemblea.nome AS 'nome_assemblea', Assemblea.ora_inizio, Assemblea.ora_termine, Luogo.nome AS 'nome_luogo' FROM Assemblea, Luogo WHERE Assemblea.blocked_flag=0 AND Luogo.blocked_flag=0 AND Assemblea.id_luogo=Luogo.id_luogo;";
                 $result = $conn->query($query);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
@@ -91,6 +90,7 @@
                                 <form method='post' action='activity.php'> 
                                     <div class='riquadro_assemblea'>
                                         <div class='left_div'>
+                                            <input type='hidden' id='assemblea' name='assemblea' value='".$row['id_assemblea']."'>
                                             <p style='font-size: larger; font-weight: bold;'>" . $row['nome_assemblea'] . "</p>
                                             <p>Ora d'inzio: " . $row["ora_inizio"] . "</p>
                                             <p>Ora di fine: " . $row["ora_termine"] . "</p>

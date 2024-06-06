@@ -94,19 +94,47 @@
             </div>
             <br>
             <?php
+            
+            $assemblea=$_POST["assemblea"];
+            $query = "SELECT 
+                `Attivita`.nome AS 'nome_attività', 
+                `Attivita`.descrizione, 
+                `Attivita`.zona, 
+                `Attivita`.max_partecipants, 
+                `Attivita`.ora_inizio, 
+                `Attivita`.ora_termine, 
+                COUNT(Iscrizione.id_iscrizione) AS 'partecipanti'
+            FROM 
+                Assemblea
+                JOIN `Attivita` ON `Attivita`.id_assemblea = Assemblea.id_assemblea
+                LEFT JOIN Iscrizione ON Iscrizione.id_attivita = `Attivita`.id_attivita
+            WHERE 
+                Assemblea.blocked_flag = 0 
+                AND `Attivita`.blocked_flag = 0 
+                AND (Iscrizione.blocked_flag = 0 OR Iscrizione.blocked_flag IS NULL)
+                AND Assemblea.id_assemblea = 1
+            GROUP BY 
+                `Attivita`.nome, 
+                `Attivita`.descrizione, 
+                `Attivita`.zona, 
+                `Attivita`.max_partecipants, 
+                `Attivita`.ora_inizio, 
+                `Attivita`.ora_termine;
 
-            $query = "SELECT Assemblea.nome AS 'nome_assemblea', Assemblea.ora_inizio, Assemblea.ora_termine, Luogo.nome AS 'nome_luogo' FROM Assemblea, Luogo WHERE Assemblea.blocked_flag=0 AND Luogo.blocked_flag=0 AND Assemblea.id_luogo=Luogo.id_luogo;";
+            ";
             $result = $conn->query($query);
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo "<br>
-                                <form method='post' action='activity.php'> 
+                                <form method='post' > 
                                     <div class='riquadro_assemblea'>
                                         <div class='left_div'>
-                                            <p style='font-size: larger; font-weight: bold;'>" . $row['nome_assemblea'] . "</p>
+                                            <p style='font-size: larger; font-weight: bold;'>" . $row['nome_attività'] . "</p>
+                                            <p>" . $row["descrizione"] . "</p>
+                                            <p>Zona: " . $row["zona"] . "</p>
                                             <p>Ora d'inzio: " . $row["ora_inizio"] . "</p>
                                             <p>Ora di fine: " . $row["ora_termine"] . "</p>
-                                            <p>Plesso: " . $row["nome_luogo"] . "</p>
+                                            <p>Partecipanti: " . $row["partecipanti"] . "/" . $row["max_partecipants"] . "</p>
                                         </div>";
                     if ($logged == true) {
                         echo "       <div class='right_div'>
@@ -125,7 +153,8 @@
                             <br>";
                 }
             }
-
+            
+    
             ?>
 
 
